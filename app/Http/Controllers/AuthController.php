@@ -36,8 +36,14 @@ class AuthController extends Controller
         return view('auth.login');
     }
 
+    public function Logout(Request $request){
+        Auth::logout();
+        $request->session()->invalidate();
+        $request->session() ->regenerateToken();
+        return redirect()->name('login');
+    }
     public function Login(Request $request)
-{
+    {
     try {
         $request->validate([
             'email' => 'required|email',
@@ -46,6 +52,7 @@ class AuthController extends Controller
 
         // Attempt login
         if (Auth::attempt($request->only('email', 'password'))) {
+            $request->session()->regenerate();
             return redirect(route('welcome'))->with('success', 'Login successful');
         } else {
             // Login failed

@@ -43,18 +43,6 @@
         </a>
     </div>
 
-    <div class="m-5">
-        <a href = "{{route('Register')}}" class = "">
-        <button class="btn btn-success">Register</button>
-        </a>
-    </div>
-
-    <div class="m-5">
-        <a href = "{{route('Login')}}" class = "">
-        <button class="btn btn-success">Login</button>
-        </a>
-    </div>
-
     <div class="d-flex flex-wrap justify-content-center gap-5">
         @foreach ($cars as $car)
         <div class="card" style="width: 18rem;">
